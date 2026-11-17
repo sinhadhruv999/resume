@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+:root {
+  --bg-page: #f8fafc;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --primary-dark: #1d4ed8;
+  --accent: #f59e0b;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 10px 25px -4px rgba(37, 99, 235, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-full: 9999px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   Reset & Global Styles
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.65;
+  padding: 2.5rem 1rem;
+  background-image: 
+    radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.04) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Hide harsh dividers in favor of card separation */
+hr {
+  display: none;
+}
+
+/* Container Wrapper */
+.header > div,
+main {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   Header / Hero Section
+   ========================================= */
+.header > div {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.intro {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: var(--surface-hover);
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.links a span {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  transition: var(--transition);
+}
+
+.links a:hover span {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.details {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   About Me Section
+   ========================================= */
+.About-me > div {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+
+.About-me > div:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.About-me h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  position: relative;
+  display: inline-block;
+}
+
+.About-me h2::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 32px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.About-me div > div {
+  color: #334155;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* =========================================
+   Grid Layout for Details
+   ========================================= */
+.gridcontainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Individual Card Styling */
+.Education,
+.skills,
+.Achievements,
+.thought {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.Education:hover,
+.skills:hover,
+.Achievements:hover,
+.thought:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Section Headings */
+h2,
+.side,
+#EDU {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Heading Icons */
+#EDU::before { content: "🎓"; font-size: 1.25rem; }
+.skills h2::before { content: "⚡"; font-size: 1.25rem; }
+.Achievements h2::before { content: "🏆"; font-size: 1.25rem; }
+.thought h2::before { content: "💡"; font-size: 1.25rem; }
+
+/* =========================================
+   Lists & Card Content
+   ========================================= */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Standard List Items */
+.Achievements li,
+.Education > div > #data > ul > li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.85rem;
+  color: #334155;
+  font-size: 0.975rem;
+}
+
+.Achievements li::before,
+.Education > div > #data > ul > li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Education Specific Hierarchy */
+.Education .sidecontent > li:first-child {
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.Education ul ul {
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--primary-light);
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.Education ul ul li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.Education ul ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Skills Badges / Chips */
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skills li {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: var(--transition);
+}
+
+.skills li:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+/* =========================================
+   Thought / Quote Section
+   ========================================= */
+.thought {
+  grid-column: 1 / -1; /* Stretch across the grid for balanced visual weight */
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  text-align: center;
+  padding: 2.25rem;
+}
+
+.thought h2 {
+  justify-content: center;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.thought div > div {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.85rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   Responsive Design (Mobile / Tablet)
+   ========================================= */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 0.85rem;
+  }
+
+  .header > div {
+    padding: 2rem 1.25rem;
+  }
+
+  .gridcontainer {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
